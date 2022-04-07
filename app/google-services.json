@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050991388129",
+    "project_id": "second-fc10b",
+    "storage_bucket": "second-fc10b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050991388129:android:6b7a9a57271e0d261a5ea0",
+        "android_client_info": {
+          "package_name": "company.faheem92mt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050991388129-tpre5a5d2kut261k3olc5jfipqsqg677.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdLOi4tAefoZt-Y8Koa0tnqsAvVYnh828"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050991388129-tpre5a5d2kut261k3olc5jfipqsqg677.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
