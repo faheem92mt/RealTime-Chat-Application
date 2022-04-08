@@ -12,4 +12,5 @@
     <string name="password_mismatch">Password Mismatch</string>
     <string name="user_created_successfully">user_created_successfully</string>
     <string name="signup_failed">Signup Failed : %1$s</string>
+    <string name="failed_to_update_profile">Failed to update profile :%1$s</string>
 </resources>
