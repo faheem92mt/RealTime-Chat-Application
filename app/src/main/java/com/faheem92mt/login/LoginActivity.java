@@ -3,11 +3,13 @@ package com.faheem92mt.login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.faheem92mt.R;
+import com.faheem92mt.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -30,6 +32,10 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
 
+    }
+
+    public void tvSignupClick(View v) {
+        startActivity(new Intent(this, SignupActivity.class));
     }
 
     public void btnLoginClick(View v) {

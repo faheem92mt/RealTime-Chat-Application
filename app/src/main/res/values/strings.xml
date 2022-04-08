@@ -10,4 +10,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="enter_correct_email">Enter Correct Email</string>
     <string name="password_mismatch">Password Mismatch</string>
+    <string name="user_created_successfully">user_created_successfully</string>
+    <string name="signup_failed">Signup Failed : %1$s</string>
 </resources>
