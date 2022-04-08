@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1050991388129",
-    "project_id": "second-fc10b",
-    "storage_bucket": "second-fc10b.appspot.com"
+    "project_number": "875645480756",
+    "project_id": "my-fdb-c099c",
+    "storage_bucket": "my-fdb-c099c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1050991388129:android:6b7a9a57271e0d261a5ea0",
+        "mobilesdk_app_id": "1:875645480756:android:71fb64b0daa4cf9da3bf61",
         "android_client_info": {
-          "package_name": "company.faheem92mt"
+          "package_name": "com.faheem92mt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1050991388129-tpre5a5d2kut261k3olc5jfipqsqg677.apps.googleusercontent.com",
+          "client_id": "875645480756-i316ct6bqb1utgrpihaf8s6safbsjc1n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBdLOi4tAefoZt-Y8Koa0tnqsAvVYnh828"
+          "current_key": "AIzaSyAQkwRoz6k4RSJ2ipBciOJZD81uQshgmbc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1050991388129-tpre5a5d2kut261k3olc5jfipqsqg677.apps.googleusercontent.com",
+              "client_id": "875645480756-i316ct6bqb1utgrpihaf8s6safbsjc1n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

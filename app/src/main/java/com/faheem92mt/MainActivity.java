@@ -1,4 +1,4 @@
-package company.faheem92mt;
+package com.faheem92mt;
 
 import androidx.appcompat.app.AppCompatActivity;
 

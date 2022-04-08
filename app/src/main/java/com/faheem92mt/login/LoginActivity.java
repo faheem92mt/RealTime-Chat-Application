@@ -1,21 +1,18 @@
-package company.faheem92mt.login;
+package com.faheem92mt.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.faheem92mt.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import company.faheem92mt.R;
-import company.faheem92mt.signup.SignupActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,10 +32,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void tvSignupClick(View v) {
-        startActivity(new Intent(this, SignupActivity.class));
-    }
-
     public void btnLoginClick(View v) {
         // connecting the "TextInputLayout" s of the front-end with the previously created String variables; only possible after the step on line 31-32
         email = etEmail.getText().toString().trim();
@@ -52,9 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         else if (password.equals("")) {
             etPassword.setError(getString(R.string.enter_password));
         }
-        // when both are not empty
         else {
-
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -70,10 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
             });
-
         }
-        // end of the else condition
-
-
     }
+
 }

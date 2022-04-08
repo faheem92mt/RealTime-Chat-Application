@@ -1,4 +1,4 @@
-package company.faheem92mt;
+package com.faheem92mt;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("company.faheem92mt", appContext.getPackageName());
+        assertEquals("com.faheem92mt", appContext.getPackageName());
     }
 }

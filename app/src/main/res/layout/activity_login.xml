@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="8dp"
     tools:context=".login.LoginActivity">
 
     <ImageView
@@ -143,5 +142,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#757575" />
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
