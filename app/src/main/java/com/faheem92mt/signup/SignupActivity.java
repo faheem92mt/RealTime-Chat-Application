@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
@@ -32,6 +35,8 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private DatabaseReference databaseReference;
 
+    private StorageReference fileStorage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +47,16 @@ public class SignupActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
 
+        fileStorage = FirebaseStorage.getInstance().getReference();
+
     }
+
+    public void pickImage(View v) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, 101);
+    }
+
+
 
     private void updateOnlyName() {
         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
