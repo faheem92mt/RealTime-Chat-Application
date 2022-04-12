@@ -115,6 +115,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
 
+        android:onClick="pickImage"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
