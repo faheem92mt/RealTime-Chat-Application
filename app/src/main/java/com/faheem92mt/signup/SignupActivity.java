@@ -35,6 +35,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 
+// sometimes bug fixes happen in Firebase Console
+
 public class SignupActivity extends AppCompatActivity {
 
     private TextInputEditText etEmail, etName, etPassword, etConfirmPassword;
