@@ -16,4 +16,12 @@
     <string name="permission_required">Access permission is required</string>
     <string name="update">Update</string>
     <string name="logOut">Log Out</string>
+    <string name="save">Save</string>
+    <string name="change_picture">Change Picture</string>
+    <string name="remove_picture">Remove Picture</string>
+    <string name="profile">Profile</string>
+    <string name="photo_removed_successfully">Photo Removed Successfully</string>
+    <string name="change_password">Change Password</string>
+    <string name="password_changed_successfully">Password Changed Successfully</string>
+    <string name="something_went_wrong">Something went wrong : %1$s</string>
 </resources>

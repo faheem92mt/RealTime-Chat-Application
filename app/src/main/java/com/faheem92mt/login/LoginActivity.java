@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.faheem92mt.MainActivity;
 import com.faheem92mt.R;
 import com.faheem92mt.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     // when the login is successful
                     if (task.isSuccessful()) {
-
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     }
                     // when the login fails
                     else {
