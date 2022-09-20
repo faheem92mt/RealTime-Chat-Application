@@ -10,7 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Theme.ChatApp">
+        <activity
+            android:name=".password.ResetPasswordActivity"
+            android:exported="false" />
         <activity
             android:name=".password.ChangePasswordActivity"
             android:exported="false" />

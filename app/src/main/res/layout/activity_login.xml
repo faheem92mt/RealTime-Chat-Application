@@ -7,7 +7,7 @@
     tools:context=".login.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="32dp"
@@ -23,15 +23,13 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_margin="32dp"
-        android:layout_marginTop="32dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <LinearLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/card_border"
@@ -43,60 +41,50 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
+                    android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_email"
-                    android:textColorHint="#757575"
-                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+                    android:hint="@string/enter_email" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:hint="@string/enter_password" />
 
                     <Button
-                        android:id="@+id/btnLogin"
+                        android:id="@+id/button"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/custom_button"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp"
                         android:onClick="btnLoginClick"
                         android:paddingLeft="32dp"
                         android:paddingRight="32dp"
-                        android:text="@string/login"
-
-                        android:textColor="@color/black"
-                        app:backgroundTint="@null" />
+                        android:text="@string/login" />
 
                     <TextView
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_height="84dp"
+                        android:layout_marginTop="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/text_style"
                         android:gravity="center"
+                        android:onClick="tvResetPasswordClick"
                         android:padding="6dp"
-                        android:shadowColor="#090909"
                         android:text="@string/reset_password"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/teal_200"
-                        android:textColorHint="#812323" />
-
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                 </com.google.android.material.textfield.TextInputLayout>
-
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -104,14 +92,12 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="60dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,27 +107,18 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="65dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/donthave_account"
-
-            android:textColor="#757575" />
+            android:text="@string/dont_have_account"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="130dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="10dp"
-
-            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
             android:onClick="tvSignupClick"
-            android:text="@string/signup"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#757575" />
+            android:text="@string/signUp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

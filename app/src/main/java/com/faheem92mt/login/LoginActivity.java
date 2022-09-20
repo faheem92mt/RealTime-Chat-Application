@@ -10,18 +10,18 @@ import android.widget.Toast;
 
 import com.faheem92mt.MainActivity;
 import com.faheem92mt.R;
+import com.faheem92mt.password.ResetPasswordActivity;
 import com.faheem92mt.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // mentioning the "TextInputLayout" s for the email and password; this is just mentioning; no relation with the front-end stuff yet
     private TextInputEditText etEmail, etPassword;
-    // creating 2 empty String variables for the email and password
     private String email, password;
 
     @Override
@@ -29,8 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // connecting the previously created variables with the actual front-end stuff
-        etEmail = findViewById(R.id.etEmail);
+        // connecting the variables with the UI
+        etEmail = findViewById(R.id.etName);
         etPassword = findViewById(R.id.etPassword);
 
     }
@@ -39,37 +39,67 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, SignupActivity.class));
     }
 
-    public void btnLoginClick(View v) {
-        // connecting the "TextInputLayout" s of the front-end with the previously created String variables; only possible after the step on line 31-32
+
+    public void btnLoginClick(View v){
+
+        // fetching the string values
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString().trim();
 
-        // when the email is empty
+        // if email is not entered
         if (email.equals("")) {
             etEmail.setError(getString(R.string.enter_email));
         }
-        // when the password is empty
+        // if password is not entered
         else if (password.equals("")) {
             etPassword.setError(getString(R.string.enter_password));
         }
+        // both entered by user
         else {
+            // Firebase initialization
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            // attempt log in with firebase
+            firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                // pre-built
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    // when the login is successful
+
+                    // if log in is successful
                     if (task.isSuccessful()) {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     }
-                    // when the login fails
+                    // if log in fails
                     else {
-                        Toast.makeText(LoginActivity.this, "Login Failed : " + task.getException(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login Failed : " +
+                                task.getException(), Toast.LENGTH_SHORT).show();
                     }
+
                 }
             });
         }
+
     }
+
+    public void tvResetPasswordClick(View view) {
+        startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        if (firebaseUser!=null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
+    }
+
+
 
 }

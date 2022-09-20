@@ -1,27 +1,35 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Chat App</string>
     <string name="enter_email">Enter Email</string>
     <string name="enter_password">Enter Password</string>
     <string name="login">Login</string>
     <string name="reset_password">Reset Password</string>
-    <string name="donthave_account">Don\'t Have account?</string>
-    <string name="signup">Sign Up</string>
-    <string name="enter_name">Enter Name</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="signUp">Sign Up</string>
     <string name="enter_correct_email">Enter Correct Email</string>
     <string name="password_mismatch">Password Mismatch</string>
-    <string name="user_created_successfully">user_created_successfully</string>
+    <string name="user_created_successfully">User Created Successfully</string>
     <string name="signup_failed">Signup Failed : %1$s</string>
-    <string name="failed_to_update_profile">Failed to update profile :%1$s</string>
-    <string name="permission_required">Access permission is required</string>
-    <string name="update">Update</string>
-    <string name="logOut">Log Out</string>
+    <string name="dont_have_account">Don\'t have account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="al_user_created_successfully">Alhamdulillah! User Created!</string>
+    <string name="sorry_failed_update_profile">Sorry. Failed to update profile : %1$s</string>
     <string name="save">Save</string>
+    <string name="log_out">Log Out</string>
     <string name="change_picture">Change Picture</string>
-    <string name="remove_picture">Remove Picture</string>
+    <string name="remove_pic">Remove Picture</string>
+    <string name="al_photo_removed">Alhamdulillah! Photo Removed!</string>
     <string name="profile">Profile</string>
-    <string name="photo_removed_successfully">Photo Removed Successfully</string>
+    <string name="al_deets_changed">Alhamdulillah! Details Updated!</string>
     <string name="change_password">Change Password</string>
-    <string name="password_changed_successfully">Password Changed Successfully</string>
+    <string name="al_pass_changed">Alhamdulillah! Password Changed!</string>
     <string name="something_went_wrong">Something went wrong : %1$s</string>
+    <string name="reset_password_instructions">Reset Password Instructions</string>
+    <string name="reset_password_instructions_sent">Reset Password Instructions has been sent on email: %1$s</string>
+    <string name="retry">Retry</string>
+    <string name="close">Close</string>
+    <string name="email_sent_failed">Sorry! Failed to send email: %1$s</string>
+    <string name="resend_timer">Resend in : %1$s</string>
+
 </resources>
