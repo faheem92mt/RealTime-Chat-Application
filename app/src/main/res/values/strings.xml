@@ -31,5 +31,7 @@
     <string name="close">Close</string>
     <string name="email_sent_failed">Sorry! Failed to send email: %1$s</string>
     <string name="resend_timer">Resend in : %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

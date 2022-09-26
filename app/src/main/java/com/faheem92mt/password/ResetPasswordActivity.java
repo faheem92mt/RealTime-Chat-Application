@@ -32,7 +32,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         tvMessage = findViewById(R.id.tvMessage);
         llMessage = findViewById(R.id.llMessage);
-        llResetPassword = findViewById(R.id.llMessage);
+        llResetPassword = findViewById(R.id.llResetPassword);
 
         btnRetry = findViewById(R.id.btnRetry);
 
@@ -54,7 +54,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
 
                     llResetPassword.setVisibility(View.GONE);
-                    llResetPassword.invalidate();
                     llMessage.setVisibility(View.VISIBLE);
 //                    llMessage.invalidate();
 

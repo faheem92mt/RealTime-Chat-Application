@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.faheem92mt.MainActivity;
+import com.faheem92mt.MessageActivity;
 import com.faheem92mt.R;
+import com.faheem92mt.common.Util;
 import com.faheem92mt.password.ResetPasswordActivity;
 import com.faheem92mt.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText etEmail, etPassword;
     private String email, password;
 
+    private View progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         // connecting the variables with the UI
         etEmail = findViewById(R.id.etName);
         etPassword = findViewById(R.id.etPassword);
+
+        progressBar = findViewById(R.id.progressBar);
 
     }
 
@@ -56,28 +62,39 @@ public class LoginActivity extends AppCompatActivity {
         }
         // both entered by user
         else {
-            // Firebase initialization
-            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-            // attempt log in with firebase
-            firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                // pre-built
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
+            if (Util.connectionAvailable(this)) {
 
-                    // if log in is successful
-                    if (task.isSuccessful()) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
+                progressBar.setVisibility(View.VISIBLE);
+
+                // Firebase initialization
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+                // attempt log in with firebase
+                firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    // pre-built
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        progressBar.setVisibility(View.GONE);
+                        // if log in is successful
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
+                        }
+                        // if log in fails
+                        else {
+                            Toast.makeText(LoginActivity.this, "Login Failed : " +
+                                    task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+
                     }
-                    // if log in fails
-                    else {
-                        Toast.makeText(LoginActivity.this, "Login Failed : " +
-                                task.getException(), Toast.LENGTH_SHORT).show();
-                    }
+                });
+            }
+            else {
+                startActivity(new Intent(LoginActivity.this, MessageActivity.class));
+            }
 
-                }
-            });
         }
 
     }
