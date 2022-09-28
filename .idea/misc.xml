@@ -7,18 +7,19 @@
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/drawable/card_border.xml" value="0.2645" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2645" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_change_password.xml" value="0.259375" />
-        <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_login.xml" value="0.259375" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_message.xml" value="0.24375" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_profile.xml" value="0.259375" />
-        <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_reset_password.xml" value="0.1" />
+        <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_reset_password.xml" value="0.259375" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_signup.xml" value="0.2537037037037037" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/activity_splash.xml" value="0.259375" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/custom_progressbar.xml" value="0.20925925925925926" />
+        <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/find_friends_layout.xml" value="0.259375" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/fragment_chat.xml" value="0.259375" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/fragment_find_friends.xml" value="0.259375" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/fragment_requests.xml" value="0.259375" />
-        <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/tab_chat.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/tab_chat.xml" value="0.8" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/tab_findfriends.xml" value="0.536" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/layout/tab_requests.xml" value="0.536" />
         <entry key="..\:/Users/maste/AndroidStudioProjects/ChatApp/app/src/main/res/menu/menu_main.xml" value="0.259375" />

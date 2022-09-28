@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.faheem92mt.profile.ProfileActivity;
 import com.google.android.material.tabs.TabLayout;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    // for back press
+    private boolean doubleBackPressed = false;
 
     // method 1 - default
     @Override
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setViewPager();
     }
 
+    // class
     class Adapter extends FragmentPagerAdapter {
 
         public Adapter(@NonNull FragmentManager fm, int behavior) {
@@ -66,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //
     private void setViewPager() {
 
         tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_chat));
@@ -123,6 +129,58 @@ public class MainActivity extends AppCompatActivity {
         //default
         return super.onOptionsItemSelected(item);
     }
+
+    //method 4
+
+
+
+    @Override
+    public void onBackPressed() {
+        // if we don't comment out this super
+        // then the remaining code is useless
+//        super.onBackPressed();
+
+        // we want to return the user to chat tab which is the default tab
+
+        // to check if the tab index is > 0 i.e "Chat Tab"
+        if (tabLayout.getSelectedTabPosition()>0) {
+            // the tab at index 0 i.e. the chat tab will be loaded
+            tabLayout.selectTab(tabLayout.getTabAt(0));
+        }
+        // if user is already at chat tab, then user can exit the app
+        // with 2 double back presses
+        else {
+            // initially its false so it'll go directly to else part
+            if (doubleBackPressed) {
+                // if user presses back within 2 seconds,
+                // it comes here and
+                // closes all activities of the app
+                finishAffinity();
+            }
+            // it comes here and turns the value true
+            else {
+                // value becomes true
+                doubleBackPressed = true;
+                // and gives a toast message
+                Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+                // however, if the user doesn't press back within 2 seconds,,
+                // the value will become false again
+
+                // 2 seconds delay, after which it'll become false
+                android.os.Handler handler = new android.os.Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        doubleBackPressed = false;
+                    }
+                }, 2000);
+            }
+
+
+        }
+
+    }
+
 
 
 }
