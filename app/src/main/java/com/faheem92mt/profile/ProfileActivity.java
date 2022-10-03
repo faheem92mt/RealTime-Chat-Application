@@ -22,7 +22,6 @@ import com.faheem92mt.R;
 import com.faheem92mt.common.NodeNames;
 import com.faheem92mt.login.LoginActivity;
 import com.faheem92mt.password.ChangePasswordActivity;
-import com.faheem92mt.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;

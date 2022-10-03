@@ -6,16 +6,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TableLayout;
 import android.widget.Toast;
 
+import com.faheem92mt.findfriends.FindFriendsFragment;
 import com.faheem92mt.profile.ProfileActivity;
 import com.google.android.material.tabs.TabLayout;
 

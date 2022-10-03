@@ -4,7 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindFriendsFragment" >
+    tools:context=".findfriends.FindFriendsFragment" >
+
+    <include
+        android:id="@+id/progressBar"
+        layout="@layout/custom_progressbar"
+        android:visibility="gone"
+        tools:visibility="invisible" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFindFriends"

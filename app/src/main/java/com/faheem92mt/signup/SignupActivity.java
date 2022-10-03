@@ -283,6 +283,7 @@ public class SignupActivity extends AppCompatActivity {
                                         hashhhMap.put(NodeNames.NAME, etName.getText().toString().trim());
                                         hashhhMap.put(NodeNames.EMAIL, etEmail.getText().toString().trim());
                                         hashhhMap.put(NodeNames.ONLINE, "true");
+//                                        hashhhMap.put(NodeNames.PHOTO, serverFileUri.getPath());
                                         hashhhMap.put(NodeNames.PHOTO, serverFileUri.getPath());
 
                                         // we're accessing the child of the current user with reference to DB (everything associated with the user)
