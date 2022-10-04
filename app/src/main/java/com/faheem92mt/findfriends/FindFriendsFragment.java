@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.faheem92mt.R;
+import com.faheem92mt.common.Constants;
 import com.faheem92mt.common.NodeNames;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +45,10 @@ public class FindFriendsFragment extends Fragment {
     private TextView tvEmptyFriendsList;
 
     private DatabaseReference databaseReference;
+
+    // to find friend request status
+    private DatabaseReference databaseReferenceFriendRequests;
+
     private FirebaseUser currentUser;
 
     private View progressBar;
@@ -82,20 +87,19 @@ public class FindFriendsFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference().child(NodeNames.USERS);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        tvEmptyFriendsList.setVisibility(View.VISIBLE);
-//        progressBar.setVisibility(View.VISIBLE);
+        // for getting friend request status
+        databaseReferenceFriendRequests = FirebaseDatabase.getInstance().getReference().child(NodeNames.FRIEND_REQUESTS).child(currentUser.getUid());
 
-//        int a = 2;
-//
-//        int[] b = {1};
+        tvEmptyFriendsList.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
+
 
 
 
 
 
         Query query = databaseReference.orderByChild(NodeNames.NAME);
-
-
 
             query.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -116,13 +120,38 @@ public class FindFriendsFragment extends Fragment {
                         }
 
                         if (ds.child(NodeNames.NAME).getValue() != null) {
-                            String fullName = ds.child(NodeNames.NAME).getValue().toString();
-                            String photoName = "images/" + userId + ".jpg";
+                            final String fullName = ds.child(NodeNames.NAME).getValue().toString();
+                            final String photoName = "images/" + userId + ".jpg";
+
+                            // for friend request status
+                            // we don't want multiple records but a single value.. therefore singleValueEvent
+                            databaseReferenceFriendRequests.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                    if (snapshot.exists()) {
+                                        String requestType = snapshot.child(NodeNames.REQUEST_TYPE).getValue().toString();
+
+                                        if (requestType.equals(Constants.REQUEST_STATUS_SENT)) {
+                                            findFriendModelList.add(new FindFriendModel(fullName, photoName, userId, true));
+                                            findFriendAdapter.notifyDataSetChanged();
+                                        }
+                                    }
+                                    else {
+                                        findFriendModelList.add(new FindFriendModel(fullName, photoName, userId, false));
+                                        findFriendAdapter.notifyDataSetChanged();
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            });
+                            // all part of the singleValueEvent
 
 
-
-                            findFriendModelList.add(new FindFriendModel(fullName, photoName, userId, false));
-                            findFriendAdapter.notifyDataSetChanged();
 
                             tvEmptyFriendsList.setVisibility(View.GONE);
                             progressBar.setVisibility(View.GONE);

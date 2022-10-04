@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.faheem92mt.R;
 import com.faheem92mt.common.Constants;
+import com.faheem92mt.common.NodeNames;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -34,6 +42,13 @@ public class FindFriendAdapter extends RecyclerView.Adapter<FindFriendAdapter.Fi
     private Context context;
     // an array which will hold the deets of all users
     private List<FindFriendModel> findFriendModelList;
+
+    // object of database reference
+    private DatabaseReference friendRequestDatabase;
+    private FirebaseUser currentUser;
+
+    // userId of the user to whom request is sent
+    private String userId;
 
     // we will create constructor for this "Adapter Class"
     //cuz we want values like "context" and "list of users" from the fragment
@@ -68,10 +83,12 @@ public class FindFriendAdapter extends RecyclerView.Adapter<FindFriendAdapter.Fi
         // this is the particular user in question
         final FindFriendModel friendModel = findFriendModelList.get(position);
 
+        // NAME
         // the userName is set for this particular user
         holder.tvFullName.setText(friendModel.getUserName());
 
-        // manish
+        // PROFILE PICTURE
+        // manish method ,,, not Master Kolhe's method
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
         // fileRef refers to the photo id of user
@@ -93,6 +110,71 @@ public class FindFriendAdapter extends RecyclerView.Adapter<FindFriendAdapter.Fi
                 .into(holder.ivProfile2);
             }
         });
+        // END OF PROFILE PICTURE SETUP OF EACH USER
+
+        // FRIEND REQUEST
+        friendRequestDatabase = FirebaseDatabase.getInstance().getReference().child(NodeNames.FRIEND_REQUESTS);
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        // to check if friend request is sent
+        if (friendModel.isRequestSent()) {
+            holder.btnSendRequest.setVisibility(View.GONE);
+            holder.btnCancelRequest.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.btnSendRequest.setVisibility(View.VISIBLE);
+            holder.btnCancelRequest.setVisibility(View.GONE);
+        }
+        //
+        holder.btnSendRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.btnSendRequest.setVisibility(View.GONE);
+                holder.pbRequest.setVisibility(View.VISIBLE);
+
+                // we need userID of the user to whom the friend request is sent
+                userId = friendModel.getUserID();
+
+                //setting the  "friend request status" as "sent" for the user to whom friend request is sent
+                friendRequestDatabase.child(currentUser.getUid()).child(userId).child(NodeNames.REQUEST_TYPE)
+                        .setValue(Constants.REQUEST_STATUS_SENT).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+                            friendRequestDatabase.child(userId).child(currentUser.getUid()).child(NodeNames.REQUEST_TYPE)
+                                    .setValue(Constants.REQUEST_STATUS_RECEIVED).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(context, "Alhamdulillah! Request Sent!", Toast.LENGTH_SHORT).show();
+                                        holder.btnSendRequest.setVisibility(View.GONE);
+                                        holder.pbRequest.setVisibility(View.GONE);
+                                        holder.btnCancelRequest.setVisibility(View.VISIBLE);
+                                    }
+                                    else {
+                                        Toast.makeText(context, "Failed to send friend request : %1$s", Toast.LENGTH_SHORT).show();
+                                        holder.btnSendRequest.setVisibility(View.VISIBLE);
+                                        holder.pbRequest.setVisibility(View.GONE);
+                                        holder.btnCancelRequest.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(context, "Failed to send friend request : %1$s", Toast.LENGTH_SHORT).show();
+                            holder.btnSendRequest.setVisibility(View.VISIBLE);
+                            holder.pbRequest.setVisibility(View.GONE);
+                            holder.btnCancelRequest.setVisibility(View.GONE);
+                        }
+
+
+                    }
+                });
+            }
+        });
+
     }
 
     @Override
@@ -101,7 +183,7 @@ public class FindFriendAdapter extends RecyclerView.Adapter<FindFriendAdapter.Fi
         return findFriendModelList.size();
     }
 
-    // we use this adapter on our FindFriendFragement to fetch the list
+    // we use this adapter on our FindFriendFragment to fetch the list
     // and show it on the recycler view
 
     // this is the "View Holder" class
